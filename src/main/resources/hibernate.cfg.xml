@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:postgresql://fiapdb.csjj4syivsay.us-west-2.rds.amazonaws.com:5432/fiapdb</property>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+      <mapping class="com.fiap.entity.CarroEntity"/>
+      <mapping class="com.fiap.entity.EnderecoEntity"/>
+      <mapping class="com.fiap.entity.MarcaCarroEntity"/>
+      <mapping class="com.fiap.entity.ModeloCarroEntity"/>
+      <mapping class="com.fiap.entity.UsuarioEntity"/>
+      <mapping class="com.fiap.entity.UsuarioEnderecoEntity"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
