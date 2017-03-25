@@ -3,7 +3,9 @@ package com.fiap.facade;
 import com.fiap.entity.UsuarioEntity;
 import com.fiap.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class UsuarioFacade {
     @RequestMapping("/buscar")
     public UsuarioEntity buscar(String email, String senha){
 
-        UsuarioEntity usuario = repository.findOne(email);
+        UsuarioEntity  usuario = repository.findOne(email);
 
         if(usuario != null){
             if(!senha.equals(usuario.getSenha())){
@@ -36,8 +38,10 @@ public class UsuarioFacade {
         return usuario;
     }
 
-    @RequestMapping("/cadastrar")
-    public UsuarioEntity cadastrar(UsuarioEntity usuarioEntity){
-        return repository.save(usuarioEntity);
+    @RequestMapping(value = "/criar", method = RequestMethod.POST)
+    public String criar(@RequestBody UsuarioEntity usuario){
+        repository.save(usuario);
+        return "Usuario criado!";
     }
+
 }
