@@ -1,6 +1,7 @@
 package com.fiap.facade;
 
 import com.fiap.entity.CarroEntity;
+import com.fiap.entity.UsuarioEntity;
 import com.fiap.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,5 +30,10 @@ public class CarroFacade {
     @RequestMapping("/listar")
     public List<CarroEntity> listar(){
         return repository.findAll();
+    }
+
+    @RequestMapping("/buscar")
+    public CarroEntity buscar(Integer placa){
+        return repository.findOne(Long.valueOf(placa));
     }
 }
